@@ -1,0 +1,27 @@
+# Modelldokumentation und -Ablage
+
+## Dokumentation
+
+In der Regel genügt eine Dokumentation im Modell selbst (Bemerkungen zu Topics, Klassen und Attributen). Bei grösseren Modellen und/oder z.B. im Rahmen von Erfassungsrichtlinien ist eine Dokumentation des Modelles in einem zusätzlichen Dokument notwendig. Die Vorlage für eine solche Dokumentation findet sich hier: `H:\BJSVW\Agi\KGDM\Vorlagen\Modelldokumentation_Vorlage_v01.docx`.
+
+Die Bemerkungen im Modell zu Topics, Klassen und Attributen werden beim Anlegen der Tabellen in der Datenbank automatisch übernommen und als Kommentar zu Tabellen und Attributen geführt. Kommentare zu einem einzelnen Aufzähltypwert werden in die Spalte `description` in der jeweiligen Aufzähltyp-Tabelle gemappt (nicht zu Verwechseln mit dem Metaattribut `ili2db.dispName`).
+
+Zusätzlich zu den INTERLIS-Objekten muss das Schema in der Datenbank kommentiert werden und falls immer möglich mit Auskunftspersonen (E-Mail-Adressen) hinterlegt werden, z.B.:
+
+`Dieses Schema wird für die Erfassung der Hoheitsgrenzen verwendet. Fragen: stefan.ziegler@bd.so.ch.`
+
+## Ablage
+
+Die definitiven und abgenommenen Datenmodelle (`*.ili`) werden in der [INTERLIS-Modellablage](http://geo.so.ch/models/) des Kantons Solothurn publiziert. Ist das Datenmodell publiziert, darf es ohne Änderung des Modellnamens inhaltlich nicht verändert werden (redaktionelle Änderungen sind denkbar). Die Publikation ist automatisiert und [hier](https://github.com/sogis/sogis-interlis-repository/blob/master/docs/betriebs-_und_nachfuehrungshandbuch.md) beschrieben.
+
+Durch die Publikation in einer Modellablage und der Verknüpfung der verschiedenen Modellablagen untereinander, finden die eingesetzten Werkzeuge (meistens) ohne weiteres Zutun sämtliche INTERLIS-Modelle, die im eigenen Modell importiert werden.
+
+Die UML-Datei wird ebenfalls in der Modellablage abgelegt. Die UML-Datei ist der Master. Es dürfen keine Änderungen nur in der INTERLIS-Modelldatei vorgenommen werden.
+
+Ilivalidator-Konfigurationsdateien (Validierungsmodell, Config-Ini- und Meta-Config-Ini-Datei) werden auch in der Modellablage im jeweiligen Amtsordner abgelegt. Dadurch reicht eine simple Angabe mit "ilidata:xxx.ini", um die Validierung resp. den Validator überall zu steuern.
+
+Die QGIS-Projekte werden im QGIS-Projekte-Repository\[<https://github.com/sogis/qgis-projects>\] gespeichert. Das Repository ist nicht öffentlich. Zukünftig soll vermehrt der [UsabILIty-Hub](https://geo.so.ch/usabilityhub/) verwendet werden.
+
+## Weitere Unterlagen
+
+Weitere Unterlagen im Rahmen der Modellierung sind im Projekte-Ordner abzulegen.

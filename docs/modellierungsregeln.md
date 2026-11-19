@@ -1,0 +1,181 @@
+﻿# Modellierungsregeln
+
+## Modellierungssprache / Compiler
+
+**Regel 101:**
+Modellierungssprache ist INTERLIS 2.3 gemäss Referenzhandbuch vom 13. April 2006.
+
+**Regel 102:**
+Für die Kontrolle der Datenmodelle wird die aktuelle INTERLIS-Compiler Version eingesetzt.
+
+**Regel 103:**
+Der Namensraum (`AT` in der ili-Datei) für Modelle (`Issuer URI` in *UML/INTERLIS-Editor*) ist `https://<AMT>.so.ch`, wobei das entsprechende Amt angegeben wird.
+
+## Modellname / Version / Formatierung
+
+**Regel 201:**
+Die Benennung von Modell- und UML- Dateien erfolgt nach folgendem Schema:
+
+kk_ds_n\*\_\[Publikation\]\_v\*\[\_Validierung_v\*\].ili/.uml
+
+kk: Kantonskuürzel (`SO`)
+
+ds: Kürzel Amt / Dienststelle (`AV`)
+
+n\*: Sprechender Name des Modells (`Nachfuehrungskreise`)
+
+v\*: Version des Modells im Format JJJJMMTT (`20160407`)
+
+Für den Dateinamen des Publikationsmodelles wird «Publikation» hinzugefügt. Für den Dateinamen des Validierungsmodells wird dem Dateinamen des zu validierenden Modelles «Validierung» (inkl. Datum) hinzugefügt.
+
+**Regel 202:**
+Die Benennung von Modellen erfolgt nach folgendem Schema:
+
+kk_ds_n\*\_\[Publikation\]\_v\*\[\_Validierung_v\*\]
+
+kk: Kantonskürzel (`SO`)
+
+ds: Kürzel Amt / Dienststelle (`AV`)
+
+n\*: Sprechender Name des Modells (`Nachfuehrungskreise`)
+
+v\*: Version des Modells im Format JJJJMMTT (`20160407`)
+
+Der Modellnamen des Validierungsmodelles und des Publikationsmodells wird analog der Regel für Dateinamen gewählt.
+
+**Regel 203:**
+Die Benennung von Konfigurationsdateien (\*.ini) erfolgt nach folgendem Schema:
+
+\<Datenmodellname\>\[\_\<Kontext\>\]\_v\*\[-meta\].ini
+
+Datenmodellname: Name des Stamm-/Kernmodelles.
+
+Kontext: Kontext für das die Konfigurationsdatei gilt. Z.B. IPW, Drainagen etc. Kann auch leer sein.
+
+**Regel 204:**
+Die Metaattribute `furtherInformation` (in der Regel der Link zur UML-Datei), `technicalContact` (`mailto:agi@bd.so.ch`), `title` und `shortDescription` sind im Header der Modelldatei (als Metaattribute zum Modell) zu erfassen.
+
+**Regel 205:**
+Die Änderungshistorie wird im Header der Modelldatei (via UML-Editor) dokumentiert.
+
+**Regel 206:**
+Für die Formatierung der Modelldateien dürfen keine Tabulatoren verwendet werden.
+
+**Regel 207:**
+In Kommentaren sollen Umlaute verwendet werden. Das Encoding der ili-Datei ist UTF-8.
+
+**Regel 208:**
+Die Version (= Datum) des Modelles ist (via UML-Editor) anzugeben. `VERSION "2017-01-19"`
+
+**Regel 209:**
+Jedes Attribut muss mit einem Kommentar versehen werden, welcher das Attribut sinnvoll beschreibt.
+
+**Regel 210:**
+Jede Klasse muss mit einem Kommentar versehen werden, welcher die Klasse sinnvoll beschreibt.
+
+## Namenskonvention
+
+**Regel 301:**
+Alle Modellelemente (Modellnamen, Topics, Klassen, Attribute etc.) werden ausschliesslich auf Deutsch bezeichnet.
+
+**Regel 302:**
+Namen von Topics, Klassen, Assoziationen und Attributen sollte nicht länger als 29 Zeichen sein.
+
+**Regel 303:**
+Topic-Namen: Gross- und Kleinschrift mit Underscore als Trennzeichen. Plural.
+
+**Regel 304:**
+Klassen-Namen: Gross- und Kleinschrift mit Underscore als Trennzeichen. Singular.
+
+**Regel 305:**
+Attribut-Namen: Gross- und Kleinschrift mit Underscore als Trennzeichen. Singular. Bei Verwendung von `BAG OF` resp. `LIST OF` oder in (Publikations-)modellen bei komma-separierten Inhalten wird der Plural verwendet.
+
+**Regel 306:**
+Die Verwendung von reservierten Namen ist nicht erlaubt (z.B. Name).
+
+## Modellstruktur
+
+**Regel 401:**
+Es müssen die Geometrietypen aus dem CHBase-Modell `GeometryCHLV95_V1` verwendet werden.
+
+**Regel 402:**
+Für Kantonskürzel muss `CHCantonCode` aus dem CHBase-Modell `CHAdminCodes_V1` verwendet werden
+
+**Regel 403:**
+BFS-Nummern sind als Wertebereich 0 .. 9999 zu definieren.
+
+**Regel 404:**
+Jahre sind als `GregorianYear` zu definieren.
+
+**Regel 405:**
+Monate sind als Wertebereich 1 .. 12 mit der Einheit (Unit) `M` zu definieren.
+
+**Regel 406:**
+Daten (Datum) sind als `XMLDate` zu definieren.
+
+## Einschränkungen zum Gebrauch von INTERLIS 2.3
+
+**Regel 501:**
+Views dürfen nur in Validierungsmodellen verwendet werden.
+
+**Regel 502:**
+Für `TEXT` muss immer eine konkrete Länge angegeben werden.
+
+## Konsistenzbedingungen
+
+**Regel 601:**
+Die Kardinalitäten von Rollen muss erfasst werden.
+
+**Regel 602:**
+UNIQUE-Bedingungen müssen, wo sinnvoll, erfasst werden.
+
+**Regel 603:**
+Den Objekten ist immer eine eindeutige Objekt-Identifikation zuzuweisen. Als OID soll in der Regel `INTERLIS.UUIDOID` verwendet werden.
+
+## Darstellungsinformationen
+
+**Regel 701:**
+Textpositionen werden nur definiert, wenn diese schwer aus den Daten berechnet werden können oder spezielle Anforderungen an die Darstellung bestehen.
+
+**Regel 702:**
+Für Labelorientierungen etc. wird die Einheit `Units.Angle_Degree` verwendet.
+
+## Allgemeines
+
+**Regel 801:**
+Allgemeiner Grundsatz: Es wird nur die IST-Situation beschrieben. Also weder Archivierung noch Historisierung respektive die dafür benötigten Attribute.
+
+## Beispielheader
+
+    INTERLIS 2.3;
+    /**
+    * !!------------------------------------------------------------------------------
+    * !! Version    | wer | Änderung
+    * !!------------------------------------------------------------------------------
+    * !! 2015-05-13 | SK  | Modell (v26) für Pilot durch Stefan Keller (SK) erstellt
+    * !! 2016-11-11 | SK  | Überarbeitung auf Version 32 (dm_npl_ktso_v32_LV95_ili2.ili)
+    * !! 2016-11-29 | OJ  | Tech. Review und Finalisierung durch Oliver Jeker (AGI)
+    * !! 2017-01-05 | OJ  | Korrektur Beziehungsrollennamen = Klassennamen
+    * !! 2017-09-01 | al  | - Lockerung der Beziehung Dokument <-> Geometrie
+    * !!            |     | - NP_Typ_Kanton_Grundnutzung mit N134 ergänzt
+    * !!            |     | - NP_Typ_Kanton_Ueberlagernd_Flaeche mit N812,N813 und
+    * !!            |     |   N820-823 ergänzt
+    * !!            |     | - Rechtschreibung bei Ueberbauungsziffer
+    * !!            |     | - Modell mit Beschreibung ergänzt
+    * !! 2017-09-15 | al  | OID AS INTERLIS.UUIDOID wieder eingefügt
+    * !! 2017-11-18 | sz  | - OID AS INTERLIS.UUIDOID für sämtliche Klassen
+    * !!            |     | - Zusätzliche Assoziation Geometrie <-> Dokument gelöscht
+    * !!            |     | - Klasse Plandokument gelöscht
+    * !!==============================================================================
+    */
+    !!@ technicalContact = "mailto:agi@bd.so.ch";
+    !!@ furtherInformation = "http://geo.so.ch/models/ARP/SO_ARP_Nutzungsplanung_20171118.uml";
+    !!@ shortDescription="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam."
+    !!@ title="Lorem ipsum dolor sit"
+    MODEL SO_ARP_Nutzungsplanung_20171118 (de)
+      AT "https://arp.so.ch"
+      VERSION "2017-11-18" =
+
+    END SO_ARP_Nutzungsplanung_20171118.
+
+

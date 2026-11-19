@@ -1,0 +1,47 @@
+# Modellierungsprozess
+
+Auf eine strenge Formalisierung des eigentlichen Modellierungsprozesses («Startsitzung», «FIG» etc.) wird verzichtet. Die Datenmodelle werden durch das AGI gemeinsam mit den Dienststellen erarbeitet. Für den Modellierungsprozess existiert eine Checkliste (aktuelle Version unter `H:\BJSVW\Agi\KGDM\Vorlagen\`). Diese ist zu verwenden und gegebenenfalls zu ergänzen.
+
+## Datenerfassungswunsch in der Dienststelle
+
+*Verantwortung: Dienststelle*
+
+Auslöser kann eine neue Aufgabe sein oder es können bestehende Daten sein, welche in die modellbasierte Struktur gebracht werden sollen.
+
+## Erarbeitung der Modelle
+
+*Verantwortung: AGI und Dienststelle*
+
+Zusammen mit der Dienststelle erarbeitet das AGI die benötigten Datenmodelle (in der Regel ein Erfassungs- und ein Publikationsmodell).
+
+Hilfreich für die Dienststelle kann eine Exceldatei (`H:\BJSVW\Agi\KGDM\Vorlagen\Datenmodell_Grundlage_Vorlage.xlsx`) sein, in die sie in tabellarischer Form ihr «Modell» eintragen (Attributename, -typen etc.) kann. Eventuell lohnt es sich bereits mit Shapefiles ein paar Testdaten zu erfassen.
+
+## Review der Modelle
+
+*Verantwortung: Dienststelle*
+
+Die Dienststellen müssen zwingend das Modell verstehen und reviewen.
+
+## Entwicklung und Testen
+
+*Verantwortung: AGI und Dienststelle*
+
+Schemen und Tabellen in der Datenbank werden mit Schema-Jobs erstellt. Analog den «normalen» GRETL-Jobs werden sie in einem [Github-Repository](https://github.com/sogis/schema-jobs) verwaltet. Das Repository ist im Gegensatz zum GRETL-Jobs-Repository nicht öffentlich.
+
+Die Verwendung der Schema-Jobs ist im [README.md](https://github.com/sogis/schema-jobs/blob/main/README.md) des Repository klar und ausführlich beschrieben.
+
+Ein Entwickler resp. eine Entwicklerin von Schema-Jobs darf Schemen auf der Test- und Integrationsumgebung selbständig erstellen und löschen.
+
+## Integration in Produktionsumgebung
+
+*Verantwortung: AGI*
+
+In der Produktionsumgebung kann in der Regel das Modell auch durch den Entwickler resp. die Entwicklerin integriert werden (ohne es an den Betrieb abzudelegieren). Die QGIS-Projektdatei muss mit den entsprechenden Datenbankparametern angepasst werden.
+
+Eine Qualitätskontrolle der Daten wird durch den Publisher (momentan nur für öffentliche Daten) sichergestellt.
+
+## Modelländerungen
+
+*Verantwortung: AGI und Dienststelle*
+
+Anforderungen an ein Modell können im Laufe der Zeit ändern. Sogenannte Modelländerungen sind zwar nicht gewünscht, aber sind nicht vermeidbar. Mit den Schema-Jobs wurde auch konsequent eine Versionierung in den Schemen-Namen eingeführt.
